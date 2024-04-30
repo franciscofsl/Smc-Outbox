@@ -41,7 +41,7 @@ public class DomainEventsQueueListener : BackgroundService
         return Task.CompletedTask;
     }
 
-    private static IEvent? GetDomainEvent(string message)
+    private static IEvent GetDomainEvent(string message)
     {
         var domainEvent = JsonConvert
             .DeserializeObject<IEvent>(

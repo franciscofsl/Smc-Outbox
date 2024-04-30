@@ -19,7 +19,6 @@ public static class Services
             ServiceLifetime.Transient, ServiceLifetime.Transient);
 
         services.AddTransient(typeof(IRepository<>), typeof(EfRepository<>));
-
         services.AddTransient<ConvertDomainEventsToOutboxMessagesInterceptor>();
     }
 }

@@ -15,6 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\SmcOutbox.Application\SmcOutbox.Application.csproj" />
       <ProjectReference Include="..\SmcOutbox.Data\SmcOutbox.Data.csproj" />
+      <ProjectReference Include="..\SmcOutbox.Infrastructure\SmcOutbox.Infrastructure.csproj" />
       <ProjectReference Include="..\SmcOutbox.Shared\SmcOutbox.Shared.csproj" />
     </ItemGroup>
 </Project>
