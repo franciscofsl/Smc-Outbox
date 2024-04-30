@@ -1,15 +1,14 @@
-﻿using MediatR;
-using SmcOutbox.Core.Common;
+﻿using SmcOutbox.Core.Common;
 using SmcOutbox.Core.Meetings;
 using SmcOutbox.Core.Meetings.Events;
 
-namespace SmcOutbox.Application.Meetings.Commands.Events;
+namespace SmcOutbox.Application.Meetings.Events;
 
-public class MeetingCreatedCommandHandler : INotificationHandler<MeetingCreated>
+public class MeetingCreatedEventHandler : IEventHandler<MeetingCreated>
 {
     private readonly IRepository<Meeting> _repository;
 
-    public MeetingCreatedCommandHandler(IRepository<Meeting> repository)
+    public MeetingCreatedEventHandler(IRepository<Meeting> repository)
     {
         _repository = repository;
     }

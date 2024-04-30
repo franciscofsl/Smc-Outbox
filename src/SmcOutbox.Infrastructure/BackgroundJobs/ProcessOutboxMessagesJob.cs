@@ -1,10 +1,10 @@
-﻿using MediatR;
-using Quartz;
+﻿using Quartz;
+using SmcOutbox.Core.Common;
 
 namespace SmcOutbox.Infrastructure.BackgroundJobs;
 
 [DisallowConcurrentExecution]
-public class ProcessOutboxMessagesJob(IPublisher publisher, OutboxMessageStore outboxMessageStore) : IJob
+public class ProcessOutboxMessagesJob(IEventDispatcher publisher, OutboxMessageStore outboxMessageStore) : IJob
 {
     public async Task Execute(IJobExecutionContext context)
     {
@@ -17,7 +17,7 @@ public class ProcessOutboxMessagesJob(IPublisher publisher, OutboxMessageStore o
                 continue;
             }
 
-            await publisher.Publish(domainEvent, context.CancellationToken);
+            await publisher.Dispatch(domainEvent, context.CancellationToken);
 
             outboxMessage.ProcessedOn = DateTime.UtcNow;
         }

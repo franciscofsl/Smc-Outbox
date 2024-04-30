@@ -12,13 +12,14 @@ public static class Services
     public static void AddData(this IServiceCollection services)
     {
         services.AddDbContext<AppDbContext>((sp, options) =>
-            options
-                .UseSqlServer(
-                    "Server=localhost,1433;Database=SmcOutbox;User=sa;Password=Semicrol_10;MultipleActiveResultSets=true;TrustServerCertificate=True;")
-                .AddInterceptors(sp.GetRequiredService<ConvertDomainEventsToOutboxMessagesInterceptor>()));
+                options
+                    .UseSqlServer(
+                        "Server=localhost,1433;Database=SmcOutbox;User=sa;Password=Semicrol_10;MultipleActiveResultSets=true;TrustServerCertificate=True;")
+                    .AddInterceptors(sp.GetRequiredService<ConvertDomainEventsToOutboxMessagesInterceptor>()),
+            ServiceLifetime.Transient, ServiceLifetime.Transient);
 
         services.AddTransient(typeof(IRepository<>), typeof(EfRepository<>));
 
-        services.AddSingleton<ConvertDomainEventsToOutboxMessagesInterceptor>();
+        services.AddTransient<ConvertDomainEventsToOutboxMessagesInterceptor>();
     }
 }

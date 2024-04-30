@@ -1,22 +1,17 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using SmcOutbox.Application.Meetings.Commands.Create;
+﻿using Microsoft.AspNetCore.Mvc;
+using SmcOutbox.Core.Common;
+using SmcOutbox.Core.Meetings;
 
 namespace SmcOutbox.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class MeetingsController(IMediator mediator) : ControllerBase
+public class MeetingsController(IRepository<Meeting> repository) : ControllerBase
 {
-    private readonly IMediator _mediator = mediator;
-
     [HttpPost]
     public async Task CreateAsync([FromForm] CreateMeetingDto request)
     {
-        await _mediator.Send(new CreateMeetingCommand
-        {
-            Code = request.Code,
-            Date = request.Date
-        });
+        var meeting = new Meeting(Guid.NewGuid(), request.Code, request.Date);
+        await repository.InsertAsync(meeting);
     }
 }

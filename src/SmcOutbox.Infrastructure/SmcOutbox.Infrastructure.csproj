@@ -3,15 +3,16 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\SmcOutbox.Data\SmcOutbox.Data.csproj" />
+      <ProjectReference Include="..\SmcOutbox.Shared\SmcOutbox.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="12.2.0" />
+      <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.17.5" />
       <PackageReference Include="Quartz" Version="3.8.1" />
       <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.8.1" />
       <PackageReference Include="Quartz.Extensions.Hosting" Version="3.8.1" />

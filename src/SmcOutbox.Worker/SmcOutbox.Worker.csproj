@@ -1,19 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-SmcOutbox.Worker-BFE942EC-2F5A-43A2-A627-61E5298AA430</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.17.5" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\SmcOutbox.Application\SmcOutbox.Application.csproj" />
       <ProjectReference Include="..\SmcOutbox.Data\SmcOutbox.Data.csproj" />
-      <ProjectReference Include="..\SmcOutbox.Infrastructure\SmcOutbox.Infrastructure.csproj" />
+      <ProjectReference Include="..\SmcOutbox.Shared\SmcOutbox.Shared.csproj" />
     </ItemGroup>
-
 </Project>

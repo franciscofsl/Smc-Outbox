@@ -15,10 +15,10 @@ public sealed class OutboxMessage
 
     public DateTime? ProcessedOn { get; set; }
 
-    public IDomainEvent ToDomainEvent()
+    public IEvent ToDomainEvent()
     {
         return JsonConvert
-            .DeserializeObject<IDomainEvent>(
+            .DeserializeObject<IEvent>(
                 Content,
                 new JsonSerializerSettings
                 {

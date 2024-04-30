@@ -2,4 +2,4 @@
 
 namespace SmcOutbox.Core.Meetings.Events;
 
-public record MeetingCreated(Guid MeetingId) : IDomainEvent;
+public record MeetingCreated(Guid MeetingId) : IEvent;

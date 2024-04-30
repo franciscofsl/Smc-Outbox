@@ -2,13 +2,13 @@
 
 public class WithDomainEvents
 {
-    private readonly List<IDomainEvent> _domainEvents = new();
+    private readonly List<IEvent> _domainEvents = new();
 
-    public IReadOnlyList<IDomainEvent> Events => _domainEvents.AsReadOnly();
+    public IReadOnlyList<IEvent> Events => _domainEvents.AsReadOnly();
 
-    protected void RaiseDomainEvent(IDomainEvent domainEvent)
+    protected void RaiseDomainEvent(IEvent @event)
     {
-        _domainEvents.Add(domainEvent);
+        _domainEvents.Add(@event);
     }
 
     public void ClearDomainEvents()
